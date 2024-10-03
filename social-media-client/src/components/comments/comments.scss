@@ -9,11 +9,11 @@
   flex-direction: column;
   padding-right: 0;
 
-  // Adding a background color and padding for the container
-  background-color: #fafafa; /* Light grey background */
-  border-radius: 8px; /* Rounded corners */
-  padding: 1rem; /* Add padding around comments */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  
+  background-color: #fafafa; 
+  border-radius: .5rem; 
+  padding: 1rem; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .post {
@@ -21,40 +21,40 @@
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 1rem;
-  padding: 1rem; /* Add padding inside each post */
-  border-bottom: solid 0.0625rem gray; /* Separator line */
+  padding: 1rem; 
+  border-bottom: solid 0.0625rem gray; 
 
   &:last-child {
-    border-bottom: none; /* Remove bottom border from last post */
+    border-bottom: none; 
   }
 
   &__image {
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
-    background-color: gray; /* Placeholder color */
+    background-color: gray; 
   }
 
   &__content {
     display: flex;
-    flex-direction: column; /* Stack name and comment */
-    justify-content: flex-start; /* Align to start */
+    flex-direction: column; 
+    justify-content: flex-start; 
     width: 100%;
   }
 
   &__name {
-    font-weight: 600; /* Bold for name */
-    color: #2e2e2e; /* Darker color for names */
+    font-weight: 600; 
+    color: #2e2e2e; 
   }
 
   &__comment {
-    margin-top: 0.5rem; /* Space between name and comment */
-    color: #555; /* Slightly lighter color for comments */
+    margin-top: 0.5rem; 
+    color: #555; 
   }
 
   &__timestamp {
-    color: silver; /* Color for timestamp */
-    font-size: 0.85rem; /* Smaller font size */
-    margin-top: 0.5rem; /* Space above timestamp */
+    color: silver; 
+    font-size: 0.85rem; 
+    margin-top: 0.5rem; 
   }
 }
