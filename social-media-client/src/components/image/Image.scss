@@ -1,12 +1,22 @@
+@use "../../styles/partials/fonts.scss" as *;
+@use "../../styles/partials/global.scss" as *;
+@use "../../styles/partials/variables" as *;
+
 .image {
     display: flex;                
     justify-content: center;      
     align-items: center;         
     width: 100%;                  
     height: auto;                 
-  }
   
-  .image img {
-    max-width: 100%;              
-    height: auto;            
+    img {
+      max-width: 100%;              
+      height: auto;            
+      border-radius: 8px; /* Rounded corners for images */
+      transition: transform 0.3s ease; /* Smooth transform */
+    }
+  
+    img:hover {
+      transform: scale(1.05); /* Slightly enlarge on hover */
+    }
   }
