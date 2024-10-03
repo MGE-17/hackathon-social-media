@@ -1,47 +1,22 @@
 // Comments.jsx
-import { useEffect, useState } from "react";
 import { epochToTimePassed } from "../../utils/helpers.jsx";
 import "./Comments.scss";
-import axios from "axios";
+const placeholderAvatar = "https://placekitten.com/200/200"; // Use an image from placekittens
 
-export default function Comments() {
-  const [comments, setComments] = useState([]); // Holds the list of comments
-  const [loading, setLoading] = useState(true); // Indicates if comments are being loaded
-  const [error, setError] = useState(null); // Holds any error messages
-
-  // Function to fetch comments from the API
-  const fetchComments = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/comments");
-      console.log("Fetched comments:", response.data); // Debugging log
-      // Sort comments by timestamp in descending order
-      const sortedComments = response.data.sort(
-        (a, b) => b.timestamp - a.timestamp
-      );
-      setComments(sortedComments);
-      setLoading(false);
-    } catch (err) {
-      console.error("Error fetching comments:", err);
-      setError("Failed to load comments.");
-      setLoading(false);
-    }
-  };
-
-  // Fetch comments when the component mounts
-  useEffect(() => {
-    const fetchData = async () => {
-      await fetchComments();
-    };
-    fetchData();
-  }, []);
-
+export default function Comments({ comments }) {
   return (
     <div className="post-container">
       {comments.map((item) => (
         <div className="post" key={item.id}>
           <div className="post__image">
-            {/* Placeholder for user avatar or image */}
-            {/* Example: <img src={item.avatar} alt={`${item.name}'s avatar`} /> */}
+            <img
+              src={item.profile}
+              alt={`${item.name}'s avatar`}
+              onError={(e) => {
+                e.target.onerror = null; // Prevent infinite loop if placeholder fails
+                e.target.src = placeholderAvatar;
+              }}
+            />
           </div>
           <div className="post__content">
             <div className="post__text">

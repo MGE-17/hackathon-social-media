@@ -1,14 +1,12 @@
 // CommentsContainer.jsx
 import "./CommentsContainer.scss";
 import mohan from "../../assets/Images/Mohan-muruge.jpg";
-import Comments from "../comments/comments";
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useState } from "react";
 
-function CommentsContainer() {
+function CommentsContainer({ comments, setComments }) {
   const [name, setName] = useState(""); // Holds the name input value
   const [comment, setComment] = useState(""); // Holds the comment input value
-  const [loading, setLoading] = useState(true); // Indicates if comments are being loaded
   const [error, setError] = useState(null); // Holds any error messages
 
   // Handler for form submission to add a new comment
@@ -36,8 +34,7 @@ function CommentsContainer() {
       );
       console.log("Posted new comment:", response.data); // Debugging log
 
-      // Update the local state to include the new comment
-      setComments((prevComments) => [response.data, ...prevComments]);
+      setComments([response.data.comment, ...comments]);
 
       // Clear form fields
       setName("");

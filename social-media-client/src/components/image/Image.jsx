@@ -1,16 +1,14 @@
 import "./image.scss";
-import socialData from "../../../../social-media-backend/data/images/beach-tunnel.jpg";
 
-function Image() {
-  const imageSrc = socialData[0].image;
+export default function Image({ imageUrl, imageName }) {
+  if (!imageUrl) {
+    return <div>Loading image...</div>;
+  }
 
   return (
-    <>
-      <div className="image">
-        <img src={socialData} alt="social-media-image" />
-      </div>
-    </>
+    <div className="image-container">
+      <img src={imageUrl} alt={imageName} className="main-image" />
+      <p className="image__name">{imageName}</p>
+    </div>
   );
 }
-
-export default Image;
