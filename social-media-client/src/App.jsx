@@ -1,5 +1,5 @@
 import "./App.css";
-import Comments from "./components/comments/comments";
+import CommentsContainer from "./components/CommentsContainer/CommentsContainer";
 import Image from "./components/image/image";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <section className="social">
       <div className="social__image"></div>
       <Image />
-      <Comments />
+      <CommentsContainer />
     </section>
   );
 }

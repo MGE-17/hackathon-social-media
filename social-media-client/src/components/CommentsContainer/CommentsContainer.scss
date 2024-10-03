@@ -1,0 +1,109 @@
+@mixin column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.conversation {
+  &__title {
+    margin-top: 1.5rem;
+    //   @include tablet {
+    //     margin-top: 3rem;
+    //     margin-bottom: 2.25rem;
+    //   }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .comments,
+    .post {
+      width: 100%;
+      position: relative;
+    }
+  }
+}
+
+.comments {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: solid 0.0625rem gray;
+  //   @include tablet {
+  //     justify-content: flex-end;
+  //   }
+
+  &__image {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    margin-top: 1.6875rem; //calculated according to form elements
+    // @include tablet {
+    //   height: 3rem;
+    //   width: 3rem;
+    // }
+  }
+
+  &__form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__name {
+    @include column-center;
+    align-items: flex-start;
+  }
+
+  &__label {
+    margin-top: 0.25rem;
+    color: silver;
+  }
+
+  &__input {
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+    border: solid 0.0625rem gray;
+    height: 2.25rem;
+    width: 100%;
+    margin-top: 0.25rem;
+
+    //   @include tablet {
+    //     height: 3rem;
+    //   }
+
+    &::placeholder {
+      color: black;
+    }
+
+    &:active {
+      border: solid 0.0625rem black;
+    }
+    &:focus-visible {
+      border: solid 0.0625rem black;
+    }
+
+    &:valid {
+      border: solid 0.0625rem gray;
+    }
+  }
+
+  &__comment {
+    @include column-center;
+    align-items: flex-start;
+
+    .comments__input {
+      height: 5.25rem;
+    }
+  }
+
+  &__button {
+    width: 100%;
+  }
+}
