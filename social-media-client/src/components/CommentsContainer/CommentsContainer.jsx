@@ -31,7 +31,6 @@ function CommentsContainer() {
           </button>
         </form>
       </div>
-      <Comments />
     </div>
   );
 }
