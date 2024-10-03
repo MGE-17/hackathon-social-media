@@ -2,13 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { v4 as uuidv4 } from 'uuid';
-
+import fs from 'fs';
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const jsonFilePath = process.env.JSON_FILE_PATH || './data/images.json';
-const imagesDirectory = process.env.IMAGES_DIRECTORY || __dirname + './data/images';
+const jsonFilePath = process.env.JSON_FILE_PATH || './data/comments.json';
+const imagesDirectory = process.env.IMAGES_DIRECTORY || __dirname + '/data/images';
+const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
 
 app.use(cors());
 app.use(express.json());
@@ -28,10 +29,10 @@ app.get('/image', (req, res) => {
 
         // Select a random image
         const randomIndex = Math.floor(Math.random() * files.length);
-        const randomImage = files[randomIndex];
-        const imageUrl = `/images/${randomImage}`;
+        const randomImage = files[randomIndex].replace(/\.[^/.]+$/, "");
+        const imageUrl = `${baseUrl}/images/${files[randomIndex]}`;
 
-        // Reset comments in images.json
+        // Reset comments in comments.json
         fs.writeFile(jsonFilePath, '[]', 'utf8', (writeErr) => {
             if (writeErr) {
                 console.error('Error resetting comments:', writeErr);
@@ -57,7 +58,7 @@ app.post('/comments', (req, res) => {
 
     fs.readFile(jsonFilePath, 'utf8', (err, data) => {
         if (err) {
-            console.error('Error reading images.json:', err);
+            console.error('Error reading comments.json:', err);
             return res.status(500).json({ error: 'Failed to read comments.' });
         }
 
@@ -68,7 +69,7 @@ app.post('/comments', (req, res) => {
                 comments = [];
             }
         } catch (parseErr) {
-            console.error('Error parsing images.json:', parseErr);
+            console.error('Error parsing comments.json:', parseErr);
             return res.status(500).json({ error: 'Failed to parse comments.' });
         }
 
@@ -76,7 +77,7 @@ app.post('/comments', (req, res) => {
 
         fs.writeFile(jsonFilePath, JSON.stringify(comments, null, 2), 'utf8', (writeErr) => {
             if (writeErr) {
-                console.error('Error writing to images.json:', writeErr);
+                console.error('Error writing to comments.json:', writeErr);
                 return res.status(500).json({ error: 'Failed to save comment.' });
             }
 
@@ -88,14 +89,14 @@ app.post('/comments', (req, res) => {
 app.get('/comments', (req, res) => {
     fs.readFile(jsonFilePath, 'utf8', (err, data) => {
         if (err) {
-            console.error('Error reading images.json:', err);
+            console.error('Error reading comments.json:', err);
             return res.status(500).json({ error: 'Failed to read comments.' });
         }
         try {
             const comments = JSON.parse(data);
             res.json(comments);
         } catch (parseErr) {
-            console.error('Error parsing images.json:', parseErr);
+            console.error('Error parsing comments.json:', parseErr);
             res.status(500).json({ error: 'Failed to parse comments.' });
         }
     });
