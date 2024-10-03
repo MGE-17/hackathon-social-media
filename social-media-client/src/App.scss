@@ -7,18 +7,17 @@ body {
   
   .social {
     margin: 0;
-    padding: 2rem; 
-    max-width: 800px; 
+    padding: 2rem;
     margin: 0 auto; 
-    background-color: white;
-    border-radius: 8px; 
+    background-color: rgb(70, 62, 62);
+    border-radius: .5rem; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
   
     &__title {
       text-align: center;
-      font-size: 2.5rem; /* Larger title font */
-      margin-bottom: 1rem; /* Space below title */
-      color: #2e2e2e; /* Darker color for title */
+      font-size: 4rem; 
+      margin-bottom: 1rem;
+      color: yellow; 
     }
   
     &__image {

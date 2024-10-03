@@ -1,5 +1,5 @@
 import "./image.scss";
-import socialData from "../../data/socialData.json";
+import socialData from "../../../../social-media-backend/data/images/beach-tunnel.jpg";
 
 function Image() {
   const imageSrc = socialData[0].image;
@@ -7,7 +7,7 @@ function Image() {
   return (
     <>
       <div className="image">
-        <img src={imageSrc} alt="social-media-image" />
+        <img src={socialData} alt="social-media-image" />
       </div>
     </>
   );
