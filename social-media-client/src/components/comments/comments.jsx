@@ -1,39 +1,48 @@
-// import deleteIcon from "../../assets/icons/icon-delete.svg";
+// Comments.jsx
+import { useEffect, useState } from "react";
 import { epochToTimePassed } from "../../utils/helpers.jsx";
 import "./Comments.scss";
-import data from "./data.json";
-import { useEffect } from "react";
+import axios from "axios";
 
 export default function Comments() {
-  //   const api = new brainflixAPI();
+  const [comments, setComments] = useState([]); // Holds the list of comments
+  const [loading, setLoading] = useState(true); // Indicates if comments are being loaded
+  const [error, setError] = useState(null); // Holds any error messages
 
-  const initialComments = data;
+  // Function to fetch comments from the API
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/comments");
+      console.log("Fetched comments:", response.data); // Debugging log
+      // Sort comments by timestamp in descending order
+      const sortedComments = response.data.sort(
+        (a, b) => b.timestamp - a.timestamp
+      );
+      setComments(sortedComments);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching comments:", err);
+      setError("Failed to load comments.");
+      setLoading(false);
+    }
+  };
 
-  initialComments.sort((a, b) => b.timestamp - a.timestamp);
-
-  //   useEffect(() => {
-  //     initialComments.sort((a, b) => b.timestamp - a.timestamp);
-  //     setComments(initialComments);
-  //   }, [initialComments]);
-
-  if (!initialComments) return null; // Don't render anything if comments are not available
-
-  //   async function deleteComment(commentId) {
-  //     try {
-  //       const response = await api.deleteComment(commentId, videoId);
-  //       setComments((oldComments) =>
-  //         oldComments.filter((comment) => comment.id !== commentId)
-  //       );
-  //     } catch (error) {
-  //       console.error("Failed to load comments: ", error);
-  //     }
-  //   }
+  // Fetch comments when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      await fetchComments();
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="post-container">
-      {initialComments.map((item) => (
+      {comments.map((item) => (
         <div className="post" key={item.id}>
-          <div className="post__image"></div>
+          <div className="post__image">
+            {/* Placeholder for user avatar or image */}
+            {/* Example: <img src={item.avatar} alt={`${item.name}'s avatar`} /> */}
+          </div>
           <div className="post__content">
             <div className="post__text">
               <p className="post__name">{item.name}</p>
@@ -42,14 +51,6 @@ export default function Comments() {
             <p className="post__timestamp">
               {epochToTimePassed(item.timestamp)}
             </p>
-            {/* <img
-              className="post__delete"
-              alt="Delete Comment"
-              src={deleteIcon}
-              onClick={() => {
-                deleteComment(item.id);
-              }}
-            /> */}
           </div>
         </div>
       ))}
