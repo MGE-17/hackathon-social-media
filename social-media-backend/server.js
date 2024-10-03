@@ -34,24 +34,24 @@ function getRandomComments(comments, min = 3, max = 5) {
 
 // New function to handle reading and writing comments
 function handleComments(res, imageUrl, imageName) {
-    fs.readFile('./data/groundtruthcomments.json', 'utf8', (readErr, data) => {
+    fs.readFile('./data/realComments.json', 'utf8', (readErr, data) => {
         if (readErr) {
-            console.error('Error reading groundtruthcomments.json:', readErr);
+            console.error('Error reading realComments.json:', readErr);
             return res.status(500).json({ error: 'Failed to read ground truth comments.' });
         }
 
-        let groundTruthComments = [];
+        let realComments = [];
         try {
-            groundTruthComments = JSON.parse(data);
-            if (!Array.isArray(groundTruthComments)) {
-                groundTruthComments = [];
+            realComments = JSON.parse(data);
+            if (!Array.isArray(realComments)) {
+                realComments = [];
             }
         } catch (parseErr) {
-            console.error('Error parsing groundtruthcomments.json:', parseErr);
+            console.error('Error parsing realComments.json:', parseErr);
             return res.status(500).json({ error: 'Failed to parse ground truth comments.' });
         }
 
-        const selectedComments = getRandomComments(groundTruthComments);
+        const selectedComments = getRandomComments(realComments);
 
         //overwrites all existing comments in the json file
         fs.writeFile(jsonFilePath, JSON.stringify(selectedComments, null, 2), 'utf8', (writeErr) => {
