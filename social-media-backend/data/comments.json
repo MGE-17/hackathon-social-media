@@ -1,1 +1,42 @@
-[]
+[
+  {
+    "id": "2i3j4k5l-6m7n-8o9p-0q1r-2s3t4u5v6w7x",
+    "name": "Charlotte Thomas",
+    "comment": "The image is a bit blurry, which detracts from the overall quality.",
+    "profile": "http://localhost:3000/people/image9.jpeg",
+    "timestamp": 1697215851234,
+    "likes": 14
+  },
+  {
+    "id": "6w7x8y9z-0a1b-2c3d-4e5f-6g7h8i9j0k1l",
+    "name": "Henry Lee",
+    "comment": "The sharpness of this image is impressive. Every detail stands out!",
+    "profile": "http://localhost:3000/people/image23.jpeg",
+    "timestamp": 1695488251234,
+    "likes": 64
+  },
+  {
+    "id": "6c7d8e9f-0g1h-2i3j-4k5l-6m7n8o9p0q1r",
+    "name": "Olivia Davis",
+    "comment": "I appreciate the effort, but the angle taken doesn't quite do justice to the subject.",
+    "profile": "http://localhost:3000/people/image3.jpeg",
+    "timestamp": 1697956251234,
+    "likes": 33
+  },
+  {
+    "id": "7n8o9p0q-1r2s-3t4u-5v6w-7x8y9z0a1b2c",
+    "name": "Grace Lee",
+    "comment": "Fantastic capture! The moment is perfectly frozen in time.",
+    "profile": "http://localhost:3000/people/image14.jpeg",
+    "timestamp": 1696598851234,
+    "likes": 53
+  },
+  {
+    "id": "4k5l6m7n-8o9p-0q1r-2s3t-4u5v6w7x8y9z",
+    "name": "Isabella Martinez",
+    "comment": "Good effort, but the lighting is a bit harsh on the subject.",
+    "profile": "http://localhost:3000/people/image11.jpeg",
+    "timestamp": 1696969051234,
+    "likes": 29
+  }
+]
