@@ -48,50 +48,46 @@ function CommentsContainer() {
     }
   };
 
-  // Render loading state
-  if (loading) return <div>Loading comments...</div>;
-
   // Render error state
   if (error) return <div>{error}</div>;
 
-  if (comments)
-    return (
-      <div className="conversation__container">
-        <div className="comments">
-          <img src={mohan} alt="comments avatar" className="comments__image" />
-          <form className="comments__form" onSubmit={handleSubmit}>
-            <div className="comments__name">
-              <label htmlFor="name" className="comments__label">
-                NAME
-              </label>
-              <input
-                type="text"
-                className="comments__input"
-                id="name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="comments__comment">
-              <label htmlFor="comment" className="comments__label">
-                COMMENT
-              </label>
-              <textarea
-                className="comments__input"
-                id="comment"
-                placeholder="Add a new comment"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              ></textarea>
-            </div>
-            <button type="submit" className="comments__button button">
+  return (
+    <div className="conversation__container">
+      <div className="comments">
+        <img src={mohan} alt="comments avatar" className="comments__image" />
+        <form className="comments__form" onSubmit={handleSubmit}>
+          <div className="comments__name">
+            <label htmlFor="name" className="comments__label">
+              NAME
+            </label>
+            <input
+              type="text"
+              className="comments__input"
+              id="name"
+              placeholder="Enter your name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="comments__comment">
+            <label htmlFor="comment" className="comments__label">
               COMMENT
-            </button>
-          </form>
-        </div>
+            </label>
+            <textarea
+              className="comments__input"
+              id="comment"
+              placeholder="Add a new comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            ></textarea>
+          </div>
+          <button type="submit" className="comments__button button">
+            COMMENT
+          </button>
+        </form>
       </div>
-    );
+    </div>
+  );
 }
 
 export default CommentsContainer;
