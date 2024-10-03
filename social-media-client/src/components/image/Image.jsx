@@ -1,11 +1,13 @@
-import "./Image.scss";
-import Img from "../../assets/react.svg";
+import "./image.scss";
+import socialData from "../../data/socialData.json";
 
 function Image() {
+  const imageSrc = socialData[0].image;
+
   return (
     <>
       <div className="image">
-        <img src={Img} alt="display" />
+        <img src={imageSrc} alt="social-media-image" />
       </div>
     </>
   );

@@ -1,11 +1,8 @@
-import { useState } from "react";
 import "./App.css";
-import Image from "./components/image/Image";
-import Comments from "./components/comments/Comments";
+import Image from "./components/image/image.jsx";
+import Comments from "./components/comments/Comments.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <section className="social">
       <Image />
