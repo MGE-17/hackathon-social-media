@@ -1,0 +1,93 @@
+// @use "../../styles/partials/mixins" as *;
+// @use "../../styles/partials/breakpoints" as *;
+// @use "../../styles/partials/fonts" as *;
+// @use "../../styles/partials/variables" as *;
+
+.post-container {
+  //   @include flex-column;
+  display: flex;
+  flex-direction: column;
+  padding-right: 0;
+}
+
+.post {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: solid 0.0625rem gray;
+
+  //   @include normal-text-black;
+
+  //   @include desktop-breakpoint {
+  //     padding-right: 1rem;
+  //     position: relative;
+  //   }
+
+  &__image {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    margin-top: 1.6875rem; //calculated according to form elements
+
+    // @include tablet-breakpoint {
+    //   height: 3rem;
+    //   width: 3rem;
+    // }
+
+    margin: 0;
+    background-color: gray;
+    border-radius: 50%;
+    min-width: 2.25rem;
+
+    // @include tablet-breakpoint {
+    //   min-width: 3rem;
+    // }
+  }
+  &__content {
+    // @include normal-text-black;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__name {
+    // @include demi-subtitle-black;
+    font-weight: 500;
+  }
+
+  &__timestamp {
+    position: absolute;
+    right: 1rem;
+    color: silver;
+    font-family: inherit;
+
+    // @include tablet-breakpoint {
+    //   right: 2.25rem;
+    // }
+
+    // @include desktop-breakpoint {
+    //   right: 1rem;
+    // }
+  }
+
+  &__delete {
+    margin-top: 2rem;
+
+    height: 1rem;
+    width: 1rem;
+    cursor: pointer;
+  }
+
+  &__comment,
+  &__comment::after {
+    margin-top: 1rem;
+    padding-right: 2.5rem;
+    font-family: inherit;
+
+    // @include normal-text-black;
+  }
+}

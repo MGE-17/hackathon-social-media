@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import Comments from "./components/comments/comments";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,7 +10,7 @@ function App() {
   return (
     <section className="social">
       <div className="social__image"></div>
-      <div className="social__comments"></div>
+      <Comments />
     </section>
   );
 }
