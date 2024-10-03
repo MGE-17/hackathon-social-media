@@ -1,19 +1,12 @@
 import "./App.css";
-<<<<<<< HEAD
-import Image from "./components/image/image.jsx";
-import Comments from "./components/comments/Comments.jsx";
-=======
 import Comments from "./components/comments/comments";
->>>>>>> keerat
+import Image from "./components/image/image";
 
 function App() {
   return (
     <section className="social">
-<<<<<<< HEAD
-      <Image />
-=======
       <div className="social__image"></div>
->>>>>>> keerat
+      <Image />
       <Comments />
     </section>
   );
